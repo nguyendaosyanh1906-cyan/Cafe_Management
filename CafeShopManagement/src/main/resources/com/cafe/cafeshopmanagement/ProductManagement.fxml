@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafe.cafeshopmanagement.controller.ProductManagementController">
+    <children>
+        <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <!-- TAB SẢN PHẨM -->
+                <Tab text="Quản lý Sản phẩm">
+                    <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                            <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                            <children>
+                                <!-- Form điền thông tin Sản phẩm đầy đủ -->
+                                <VBox prefWidth="320.0" spacing="10.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 10;">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Thông tin Sản phẩm" />
+                                        <TextField fx:id="txtProductName" promptText="Tên sản phẩm" />
+                                        <ComboBox fx:id="cbCategory" maxWidth="Infinity" promptText="Danh mục" />
+                                        <TextField fx:id="txtPrice" promptText="Giá gốc (Size M)" />
+                                        <TextArea fx:id="txtDescription" prefHeight="60.0" promptText="Mô tả đồ uống..." wrapText="true" />
+
+                                        <!-- Chọn ảnh bằng đường dẫn hoặc FileChooser -->
+                                        <HBox spacing="5.0">
+                                            <children>
+                                                <TextField fx:id="txtImagePath" promptText="Đường dẫn ảnh / URL" HBox.hgrow="ALWAYS" />
+                                                <Button mnemonicParsing="false" onAction="#handleBrowseImage" text="Chọn ảnh" />
+                                            </children>
+                                        </HBox>
+
+                                        <CheckBox fx:id="chkProductActive" selected="true" text="Đang kinh doanh" />
+
+                                        <HBox spacing="5.0">
+                                            <children>
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleAddProduct" text="Thêm" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleUpdateProduct" text="Sửa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleDeleteProduct" text="Xóa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleClearProduct" text="Làm mới" />
+                                            </children>
+                                        </HBox>
+                                        <Label fx:id="lblProductMsg" textFill="RED" />
+                                    </children>
+                                </VBox>
+                                <!-- Bảng dữ liệu Sản phẩm -->
+                                <TableView fx:id="tableProducts" prefHeight="551.0" prefWidth="550.0" HBox.hgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colProductId" prefWidth="40.0" text="ID" />
+                                        <TableColumn fx:id="colProductName" prefWidth="130.0" text="Tên sản phẩm" />
+                                        <TableColumn fx:id="colCategory" prefWidth="80.0" text="Danh mục" />
+                                        <TableColumn fx:id="colPrice" prefWidth="90.0" text="Giá gốc" />
+                                        <TableColumn fx:id="colDescription" prefWidth="120.0" text="Mô tả" />
+                                        <TableColumn fx:id="colProductStatus" prefWidth="70.0" text="Active" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </HBox>
+                    </content>
+                </Tab>
+
+                <!-- TAB TOPPING -->
+                <Tab text="Quản lý Topping">
+                    <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                            <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                            <children>
+                                <VBox prefWidth="320.0" spacing="10.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 10;">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Thông tin Topping" />
+                                        <TextField fx:id="txtToppingName" promptText="Tên Topping" />
+                                        <TextField fx:id="txtToppingPrice" promptText="Giá Topping" />
+                                        <CheckBox fx:id="chkToppingActive" selected="true" text="Còn hàng" />
+
+                                        <HBox spacing="5.0">
+                                            <children>
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleAddTopping" text="Thêm" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleUpdateTopping" text="Sửa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleDeleteTopping" text="Xóa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleClearTopping" text="Làm mới" />
+                                            </children>
+                                        </HBox>
+                                        <Label fx:id="lblToppingMsg" textFill="RED" />
+                                    </children>
+                                </VBox>
+                                <TableView fx:id="tableToppings" prefHeight="551.0" prefWidth="550.0" HBox.hgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colToppingId" prefWidth="60.0" text="ID" />
+                                        <TableColumn fx:id="colToppingName" prefWidth="200.0" text="Tên Topping" />
+                                        <TableColumn fx:id="colToppingPrice" prefWidth="120.0" text="Giá" />
+                                        <TableColumn fx:id="colToppingStatus" prefWidth="100.0" text="Trạng thái" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </HBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

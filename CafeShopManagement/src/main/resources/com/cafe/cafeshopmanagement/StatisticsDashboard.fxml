@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #f4f6f9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafe.cafeshopmanagement.controller.StatisticsDashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <!-- Tiêu đề trang -->
+    <Label text="Thống kê &amp; Báo cáo" textFill="#2c3e50">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+
+    <!-- Khu vực thẻ tổng quan (Cards) -->
+    <HBox spacing="20.0">
+        <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+            <Label text="DOANH THU HÔM NAY" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+            <Label fx:id="lblTodayRevenue" text="0 VNĐ" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="28.0" />
+                </font>
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+
+        <!-- Bạn có thể copy thẻ VBox trên và đổi màu/text nếu muốn thêm các thẻ như: TỔNG ĐƠN HÀNG, KHÁCH HÀNG MỚI... trong tương lai -->
+    </HBox>
+
+    <!-- Khu vực biểu đồ (Charts) -->
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+
+        <!-- Biểu đồ cột: Doanh thu 7 ngày -->
+        <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <BarChart fx:id="barChartRevenue" legendVisible="false" title="Doanh thu 7 ngày qua" VBox.vgrow="ALWAYS">
+                <xAxis>
+                    <CategoryAxis label="Ngày" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Doanh thu (VNĐ)" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <!-- Biểu đồ tròn: Top 5 món bán chạy -->
+        <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <PieChart fx:id="pieChartTopProducts" title="Top 5 món bán chạy" VBox.vgrow="ALWAYS" />
+        </VBox>
+
+    </HBox>
+
+</VBox>

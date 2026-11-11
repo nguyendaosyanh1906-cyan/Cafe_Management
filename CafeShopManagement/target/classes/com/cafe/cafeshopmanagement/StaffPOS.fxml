@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafe.cafeshopmanagement.controller.StaffPOSController">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="50.0" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <children>
+                <Label style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18;" text="CAFE POS - MÀN HÌNH BÁN HÀNG" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" text="Đăng xuất / Quay lại" />
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10.0" style="-fx-padding: 10;">
+            <children>
+                <!-- Thanh lọc danh mục: Đã đổi Nước ép -> Phindi -->
+                <HBox spacing="10.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#handleFilterAll" text="Tất cả" />
+                        <Button mnemonicParsing="false" onAction="#handleFilterCoffee" text="Cà phê" />
+                        <Button mnemonicParsing="false" onAction="#handleFilterTea" text="Trà sữa" />
+                        <Button mnemonicParsing="false" onAction="#handleFilterPhindi" text="Phindi" />
+                    </children>
+                </HBox>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <content>
+                        <FlowPane fx:id="flowPaneProducts" hgap="15.0" style="-fx-padding: 10;" vgap="15.0" />
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox prefWidth="420.0" spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 10; -fx-border-color: #dee2e6;">
+            <children>
+                <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Thông tin đơn hàng" />
+
+                <TableView fx:id="tableCart" prefHeight="280.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colCartProduct" prefWidth="140.0" text="Tên món" />
+                        <TableColumn fx:id="colCartQty" prefWidth="60.0" text="SL" />
+                        <TableColumn fx:id="colCartUnitPrice" prefWidth="80.0" text="Đơn giá" />
+                        <TableColumn fx:id="colCartTotal" prefWidth="100.0" text="Thành tiền" />
+                    </columns>
+                </TableView>
+
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleRemoveCartItem" style="-fx-background-color: #ff7675; -fx-text-fill: white;" text="Xóa món đang chọn" />
+
+                <VBox spacing="5.0" style="-fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-padding: 10;">
+                    <children>
+                        <Label style="-fx-font-weight: bold;" text="Khách hàng thân thiết" />
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <TextField fx:id="txtCustomerPhone" promptText="Nhập SĐT khách hàng..." />
+                            <Button text="Tìm" onAction="#handleSearchCustomer" style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+
+                            <!-- Bổ sung nút Thêm mới ở đây -->
+                            <Button text="Thêm" onAction="#handleAddCustomer" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                        </HBox>
+                        <Label fx:id="lblCustomerInfo" text="Khách vãng lai (0 điểm)" textFill="#2980b9" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="8.0" style="-fx-background-color: #eef2f7; -fx-padding: 10; -fx-background-radius: 5;">
+                    <children>
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 14;" text="Tổng tiền món:" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="lblSubTotal" style="-fx-font-size: 14; -fx-font-weight: bold;" text="0 VNĐ" />
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="TỔNG THANH TOÁN:" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="lblFinalTotal" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="0 VNĐ" />
+                            </children>
+                        </HBox>
+
+                    </children>
+                </VBox>
+
+                <Button maxWidth="Infinity" prefHeight="45.0" mnemonicParsing="false" onAction="#handleCheckout" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" text="THANH TOÁN &amp; IN HÓA ĐƠN" />
+            </children>
+        </VBox>
+    </right>
+</BorderPane>
