@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafe.cafeshopmanagement.controller.UserCustomerManagementController">
+    <children>
+        <TabPane layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <!-- TAB NHÂN VIÊN -->
+                <Tab text="Quản lý Nhân viên">
+                    <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                            <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                            <children>
+                                <!-- Form điền thông tin -->
+                                <VBox prefWidth="300.0" spacing="10.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 10;">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Thông tin Nhân viên" />
+                                        <TextField fx:id="txtUsername" promptText="Tên đăng nhập" />
+                                        <TextField fx:id="txtPassword" promptText="Mật khẩu" />
+                                        <ComboBox fx:id="cbRole" prefWidth="150.0" promptText="Quyền" maxWidth="Infinity" />
+                                        <TextField fx:id="txtUserFullName" promptText="Họ và tên" />
+                                        <TextField fx:id="txtUserPhone" promptText="Số điện thoại" />
+                                        <TextField fx:id="txtSalary" promptText="Mức lương" />
+                                        <CheckBox fx:id="chkUserActive" selected="true" text="Đang hoạt động" />
+
+                                        <!-- Đã sửa HBox nút bấm: Thêm hgrow và maxWidth -->
+                                        <HBox spacing="5.0">
+                                            <children>
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleAddUser" text="Thêm" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleUpdateUser" text="Sửa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleDeleteUser" text="Xóa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleClearUser" text="Làm mới" />
+                                            </children>
+                                        </HBox>
+                                        <Label fx:id="lblUserMsg" textFill="RED" />
+                                    </children>
+                                </VBox>
+                                <!-- Bảng dữ liệu -->
+                                <TableView fx:id="tableUsers" prefHeight="551.0" prefWidth="570.0" HBox.hgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colUserId" prefWidth="50.0" text="ID" />
+                                        <TableColumn fx:id="colUsername" prefWidth="100.0" text="Tài khoản" />
+                                        <TableColumn fx:id="colRole" prefWidth="75.0" text="Quyền" />
+                                        <TableColumn fx:id="colUserFullName" prefWidth="120.0" text="Họ tên" />
+                                        <TableColumn fx:id="colUserPhone" prefWidth="100.0" text="SĐT" />
+                                        <TableColumn fx:id="colSalary" prefWidth="75.0" text="Lương" />
+                                        <TableColumn fx:id="colUserStatus" prefWidth="60.0" text="Active" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </HBox>
+                    </content>
+                </Tab>
+
+                <!-- TAB KHÁCH HÀNG -->
+                <Tab text="Quản lý Khách hàng">
+                    <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                            <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                            <children>
+                                <!-- Form điền thông tin -->
+                                <VBox prefWidth="300.0" spacing="10.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 10;">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Thông tin Khách hàng" />
+                                        <TextField fx:id="txtCusPhone" promptText="Số điện thoại" />
+                                        <TextField fx:id="txtCusFullName" promptText="Họ và tên" />
+                                        <TextField fx:id="txtPoints" promptText="Điểm tích lũy" />
+
+                                        <!-- Đã sửa HBox nút bấm: Thêm hgrow và maxWidth -->
+                                        <HBox spacing="5.0">
+                                            <children>
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleAddCustomer" text="Thêm" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleUpdateCustomer" text="Sửa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleDeleteCustomer" text="Xóa" />
+                                                <Button maxWidth="Infinity" HBox.hgrow="ALWAYS" mnemonicParsing="false" onAction="#handleClearCustomer" text="Làm mới" />
+                                            </children>
+                                        </HBox>
+                                        <Label fx:id="lblCusMsg" textFill="RED" />
+                                    </children>
+                                </VBox>
+                                <!-- Bảng dữ liệu -->
+                                <TableView fx:id="tableCustomers" prefHeight="551.0" prefWidth="570.0" HBox.hgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colCustomerId" prefWidth="50.0" text="ID" />
+                                        <TableColumn fx:id="colCusPhone" prefWidth="120.0" text="Số điện thoại" />
+                                        <TableColumn fx:id="colCusFullName" prefWidth="150.0" text="Họ tên" />
+                                        <TableColumn fx:id="colPoints" prefWidth="100.0" text="Điểm tích lũy" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </HBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
