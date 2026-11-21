@@ -38,3 +38,14 @@ INSERT INTO Products (product_id, category_id, name, base_price, is_active) VALU
                                                                                 (13, 3, 'Phindi Kem Sữa', 40000, 1),
                                                                                 (14, 3, 'Phindi Hạnh Nhân', 40000, 1),
                                                                                 (15, 3, 'Phindi Choco', 40000, 1);
+-- 3.5 Thêm dữ liệu vào Toppings
+INSERT INTO Toppings (topping_id, name, price, is_active) VALUES
+(1, 'Trân châu đen', 5000, 1),
+(2, 'Kem muối', 5000, 1),
+(3, 'Kem béo', 5000, 1),
+(4, 'Trân châu trắng', 5000, 1),
+(5, 'Thạch Cà Phê', 7000, 1),
+(6, 'Bánh Flan', 7000, 1),
+(7, 'Dừa sấy giòn', 7000, 1),
+(8, 'Whipped Cream', 7000, 1),
+(9, 'Bột Cacao', 5000, 1);
